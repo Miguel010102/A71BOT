@@ -35,3 +35,9 @@ client.on(`messageCreate`, (message) => {
         message.channel.send("sisi dame patata caliente papi");
     }
 });
+
+client.on(`messageCreate`, (message) => {
+    if (message.content == PREFIX + 'hola') {
+        message.channel.send("no");
+    }
+});
