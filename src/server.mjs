@@ -11,14 +11,6 @@ const CLIENT_ID = process.env.CLIENT_ID
 
 client.login(TOKEN)
 
-module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('hola 7B1OT')
-		.setDescription('Saludas al bot'),
-	async execute(interaction) {
-		await interaction.reply('hola');
-	},
-};
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
