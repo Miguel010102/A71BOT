@@ -7,7 +7,6 @@ const client = new Client({ intents: ['Guilds', 'GuildMessages', GatewayIntentBi
 //Loading token before login is faster than loading it in the process.
 //Also loading the token from .env file, which is safer.
 const TOKEN = process.env.BOT_TOKEN
-const CLIENT_ID = process.env.CLIENT_ID
 
 client.login(TOKEN)
 
