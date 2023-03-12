@@ -43,6 +43,14 @@ client.on(`messageCreate`, (message) => {
 });
 
 client.on(`messageCreate`, (message) => {
+    if (message.content == PREFIX + 'numero') {
+        let num = Math.floor(Math.random() * 10) + 1;
+        num = num.toString();
+        message.channel.send('Numero de 1 a 10: '+num);
+    }
+});
+
+client.on(`messageCreate`, (message) => {
     if (message.content == PREFIX + 'help') {
         const embedhelp = new EmbedBuilder()
             .setColor(0x008b02)
@@ -50,9 +58,10 @@ client.on(`messageCreate`, (message) => {
             .setAuthor({ name: '7B1OT' })
             //.setDescription('Some description here')
             .addFields(
-                { name: '7patata', value: 'hehehe', inline: true },
-                { name: '7hola', value: 'NO', inline: true },
-                { name: '7help', value: 'Esto', inline: true }
+                { name: '7patata', value: 'hehehe', inline: false },
+                { name: '7hola', value: 'NO', inline: false },
+                { name: '7help', value: 'Esto', inline: false },
+                { name: '7numero', value: 'Numero random de 1 a 10.', inline: false}
             )
         message.channel.send({ embeds: [embedhelp] });
     }
