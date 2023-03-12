@@ -3,13 +3,6 @@ import { Client, GatewayIntentBits } from 'discord.js';
 
 config();
 
-const commands = [
-    {
-        name: 'ping',
-        description: 'Replies with Pong!',
-    },
-];
-
 const client = new Client({ intents: ['Guilds', 'GuildMessages', GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 //Loading token before login is faster than loading it in the process.
 //Also loading the token from .env file, which is safer.
