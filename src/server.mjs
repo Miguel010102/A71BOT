@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits, SlashCommandBuilder, Routes } from 'discord.js';
+import { Client, GatewayIntentBits, EmbedBuilder } from 'discord.js';
 import { config } from 'dotenv';
 
 
@@ -39,5 +39,21 @@ client.on(`messageCreate`, (message) => {
 client.on(`messageCreate`, (message) => {
     if (message.content == PREFIX + 'hola') {
         message.channel.send("no");
+    }
+});
+
+client.on(`messageCreate`, (message) => {
+    if (message.content == PREFIX + 'help') {
+        const embedhelp = new EmbedBuilder()
+            .setColor(0x008b02)
+            .setTitle('Lista de comandos')
+            .setAuthor({ name: '7B1OT' })
+            //.setDescription('Some description here')
+            .addFields(
+                { name: '7patata', value: 'hehehe', inline: true },
+                { name: '7hola', value: 'NO', inline: true },
+                { name: '7help', value: 'Esto', inline: true }
+            )
+        message.channel.send({ embeds: [embedhelp] });
     }
 });
