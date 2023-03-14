@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits, EmbedBuilder } from 'discord.js';
 import { config } from 'dotenv';
-import 'ytdl-core-discord';
-import { joinVoiceChannel } from '@discordjs/voice';
+import { createAudioResource, createAudioPlayer, joinVoiceChannel, AudioPlayerStatus, StreamType } from '@discordjs/voice';
+import ytdl from 'ytdl-core';
 
 
 config();
@@ -14,7 +14,6 @@ const TOKEN = process.env.BOT_TOKEN
 const PREFIX = process.env.BOT_PREFIX
 
 client.login(TOKEN)
-
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
@@ -39,46 +38,12 @@ client.on(`messageCreate`, (message) => {
     }
 });
 
-client.on('message', async message => {
-    if (message.content.startsWith(PREFIX + 'play')) {
-        const args = message.content.split(' ');
-        const voiceChannel = message.member.voice.channel;
 
-        if (!voiceChannel) {
-            return message.reply('Tienes que estar en un canal para poder escuchar musica!');
-        }
-
-        const connection = joinVoiceChannel({
-            channelId: voiceChannel.id,
-            guildId: message.guild.id,
-            adapterCreator: message.guild.voiceAdapterCreator,
-        });
-
-        const searchQuery = args.slice(1).join(' ');
-        const stream = await ytdl(searchQuery, { filter: 'audioonly' });
-        const player = connection.play(stream);
-
-        player.on('finish', () => {
-            connection.destroy();
-        });
-    }
-});
-
-client.on('message', async message => {
-    if (message.content === PREFIX + 'stop') {
-        const connection = client.voice.connections.get(message.guild.id);
-        if (connection) {
-            connection.destroy();
-        }
-    }
-});
-
-client.on('message', message => {
-    if (message.content === PREFIX + 'ping') {
+client.on(`messageCreate`, (message) => {
+    if (message.content == PREFIX + 'ping') {
         message.channel.send(`Pong! ${client.ws.ping}ms`);
     }
 });
-
 
 client.on(`messageCreate`, (message) => {
     if (message.content == PREFIX + 'hola') {
