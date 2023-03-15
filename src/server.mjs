@@ -75,7 +75,7 @@ client.on(`messageCreate`, (message) => {
     if (message.content == PREFIX + 'help') {
         const embedhelp = new EmbedBuilder()
             .setColor(0x008b02)
-            .setTitle('Lista de comandos')
+            .setTitle('Lista de comandos (BETA)')
             .setAuthor({ name: '7B1OT' })
             //.setDescription('Some description here')
             .addFields(
@@ -85,7 +85,7 @@ client.on(`messageCreate`, (message) => {
                 { name: '7numero', value: 'Toma 2 argumentos MIN y MAX (min-max)', inline: false },
                 { name: '7ping', value: 'Te da el ping del bot', inline: false }
             )
-            .setFooter({ name: 'Este bot aun esta en beta! Si ay un bug, dm a @alvarro71 o @M👑' })
         message.channel.send({ embeds: [embedhelp] });
+        message.channel.send("")
     }
 })
