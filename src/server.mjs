@@ -6,6 +6,8 @@ import ytdl from 'ytdl-core';
 
 config();
 
+//estoy teniendo una folla mental
+
 
 const client = new Client({ intents: ['Guilds', 'GuildMessages', GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 //Loading token before login is faster than loading it in the process.
@@ -31,6 +33,7 @@ client.on(`messageCreate`, (message) => {
 
 */
 
+//El bot esta en beta, porfavor olvide que esto a pasado.
 
 client.on(`messageCreate`, (message) => {
     if (message.content == PREFIX + 'patata') {
@@ -79,8 +82,10 @@ client.on(`messageCreate`, (message) => {
                 { name: '7patata', value: 'hehehe', inline: false },
                 { name: '7hola', value: 'NO', inline: false },
                 { name: '7help', value: 'Esto', inline: false },
-                { name: '7numero', value: 'Toma 2 argumentos MIN y MAX (min-max)', inline: false }
+                { name: '7numero', value: 'Toma 2 argumentos MIN y MAX (min-max)', inline: false },
+                { name: '7ping', value: 'Te da el ping del bot', inline: false }
             )
+            .setFooter({ name: 'Este bot aun esta en beta! Si ay un bug, dm a @alvarro71 o @M👑' })
         message.channel.send({ embeds: [embedhelp] });
     }
-});
+})
